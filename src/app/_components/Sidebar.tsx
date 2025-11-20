@@ -124,7 +124,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
             {/* Hamburger for mobile is now in Header */}
             {/* Sidebar for desktop */}
             <aside className="hidden w-64 flex-col bg-[var(--ctp-surface0)] md:flex">
-                <div className="mb-8 flex flex-col items-center">
+                <div className="mt-4 mb-8 flex flex-col items-center">
                     <img
                         src="/favicon.ico"
                         alt="Logo"

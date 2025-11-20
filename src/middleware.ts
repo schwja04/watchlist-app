@@ -15,9 +15,6 @@ export default clerkMiddleware(async (auth, req) => {
 
 
     if (!sessionClaims?.onboardingComplete) {
-        // Dummy call to see if we get here
-        console.log("User has not completed onboarding");
-
         // Execute a fetch to post to the onboarding API route
         const onboardingResponse = await fetch(`${req.nextUrl.origin}/api/onboarding`, {
             method: "POST",
