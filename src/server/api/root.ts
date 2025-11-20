@@ -1,4 +1,5 @@
-import { postRouter } from "~/server/api/routers/post";
+import { movieRouter } from "~/server/api/routers/movie";
+import { watchlistRouter } from "~/server/api/routers/watchlist";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 
 /**
@@ -7,7 +8,8 @@ import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-  post: postRouter,
+    movie: movieRouter,
+    watchlist: watchlistRouter,
 });
 
 // export type definition of API

@@ -1,29 +1,34 @@
-# Create T3 App
+# Watchlist App
+This is a simple watchlist application built with Next.js. It allows users to create and manage a list of items, currently only movies, they want to watch.
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Features
+- User authentication
+- Add items to the watchlist
+- View the list of items in the watchlist
+- Remove items from the watchlist
+- Responsive design for mobile and desktop
+- Persistent storage
+- Webhooks for real-time updates (in development)
+  - The webhooks functionality will be exist a separate service that processes and event outbox and publishes events to subscribed clients.
 
-## What's next? How do I make an app with this?
+## Technologies Used
+- *Next.js* for server-side rendering and routing
+- *React* for building user interfaces
+- *Tailwind CSS* for styling
+- *Drizzle* for database ORM
+- *PostgreSQL* for persistent storage
+- *Clerk.js* for authentication
+- *Vercel* for deployment
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Getting Started
+### Prerequisites
+- Updated Node.js (v14 or higher)
+- PostgreSQL database
+- TMDB API Key (for movie data)
+- Clerk.js account (for authentication)
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### Running the Application Locally
+1. Copy the `.env.example` file to `.env` and fill in the required environment variables
+2. Install dependencies using `npm install`
+3. Run database migrations using `npm run db:push`
+4. Start the development server using `npm run dev`
