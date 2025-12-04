@@ -4,28 +4,7 @@
 import { sql } from "drizzle-orm";
 import { index, pgTableCreator, uniqueIndex } from "drizzle-orm/pg-core";
 
-/**
- * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
- * database instance for multiple projects.
- *
- * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
- */
 export const createTable = pgTableCreator((name) => `watchlist-app_${name}`);
-
-// export const posts = createTable(
-//   "post",
-//   (d) => ({
-//     id: d.integer().primaryKey().generatedByDefaultAsIdentity(),
-//     name: d.varchar({ length: 256 }),
-//     createdAt: d
-//       .timestamp({ withTimezone: true })
-//       .default(sql`CURRENT_TIMESTAMP`)
-//       .notNull(),
-//     updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
-//   }),
-//   (t) => [index("name_idx").on(t.name)],
-// );
-//
 
 export const users = createTable(
     "user",
@@ -100,3 +79,19 @@ export const watchlistItems = createTable(
     }),
 );
 
+export const outboxEvents = createTable(
+    "outbox_event",
+    (d) => ({
+        id: d.serial().primaryKey(),
+        event_type: d.varchar({ length: 100 }).notNull(),
+        payload: d.jsonb().notNull(),
+        attempts_to_process: d.integer().default(0).notNull(),
+        processed: d.boolean().default(false).notNull(),
+        created_at: d
+            .timestamp({ withTimezone: true })
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        updated_at: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
+        processed_at: d.timestamp({ withTimezone: true }),
+    }),
+);
